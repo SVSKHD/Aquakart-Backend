@@ -7,6 +7,7 @@ require("dotenv").config();
 const { readdirSync } = require("fs");
 const fileUpload = require("express-fileupload");
 
+
 //Server initlize
 const Server = express();
 
@@ -38,9 +39,9 @@ Server.get("/api", (req, res) => {
 readdirSync("./CommonUsers/routes/").map((r) =>
    Server.use("/api", require("./CommonUsers/routes/" + r))
 );
-// readdirSync("./CRM/routes").map((r) =>
-//   Server.use("/crm", require("./CRM/routes/" + r))
-// );
+readdirSync("./Crm/routes/").map((r) =>
+  Server.use("/crm", require("./Crm/routes/" + r))
+);
 // readdirSync("./ECOM/routes").map((r) =>
 //   Server.use("/api", require("./ECOM/routes/" + r))
 // );
