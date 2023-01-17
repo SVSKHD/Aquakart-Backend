@@ -1,23 +1,20 @@
-const toNext = require("../../middlewares/toNext")
-const AquaInvoices = require("../models/AquaInvoice")
+const toNext = require("../../middlewares/toNext");
+const CustomError = require("../../utils/CustomError");
+const AquaInvoices = require("../models/AquaInvoice");
 
 exports.createInvoice = toNext(async (req, res, next) => {
-    const body = req.body
-    const Invoice = await AquaInvoices.create(body)
-    res.send(Invoice)
-  });
+  const body = req.body;
+  if (!body) {
+    return next(new CustomError("Please Provide valid data", 400));
+  }
 
-exports.loadAllInvoices = () =>{
+  const Invoice = await AquaInvoices.create(body);
+  res.send(Invoice);
+});
 
-}
-exports.loadGstInvoices = () =>{
+exports.loadAllInvoices = () => {};
+exports.loadGstInvoices = () => {};
 
-}
+exports.updateInvoice = () => {};
 
-exports.updateInvoice = ()=>{
-
-}
-
-exports.deleteInvoice = () =>{
-
-}
+exports.deleteInvoice = () => {};
