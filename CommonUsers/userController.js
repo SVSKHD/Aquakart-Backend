@@ -2,6 +2,7 @@ const toNext = require("../middlewares/toNext")
 const AquaUsers = require("./userModel")
 const cookieToken = require("../utils/CookieToken")
 const CustomError = require("../utils/CustomError")
+
 exports.Signup = toNext(async (req, res, next) => {
     //{ this code for accepting the photo files
     // let result;
