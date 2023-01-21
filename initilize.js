@@ -6,7 +6,7 @@ const morgan = require("morgan");
 require("dotenv").config();
 const { readdirSync } = require("fs");
 const fileUpload = require("express-fileupload");
-
+const routes = require("./BackupRoutes/previousInvoices")
 
 //Server initlize
 const Server = express();
@@ -41,6 +41,9 @@ readdirSync("./CommonUsers/routes/").map((r) =>
 );
 readdirSync("./Crm/routes/").map((r) =>
   Server.use("/crm", require("./Crm/routes/" + r))
+);
+readdirSync("./BackupRoutes/routes/").map((r) =>
+  Server.use("/backup", require("./BackupRoutes/routes/" + r))
 );
 // readdirSync("./ECOM/routes").map((r) =>
 //   Server.use("/api", require("./ECOM/routes/" + r))
